@@ -1,1 +1,10 @@
-/firmware/*.uf2
+# local west workspace + build output (created by build.sh / west update)
+/.west/
+/build/
+/firmware/
+/zephyr/
+/zmk/
+/modules/
+/tools/
+/bootloader/
+*.uf2
