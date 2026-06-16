@@ -11,9 +11,14 @@ for side in left right; do
   echo
   echo "============================================================"
   echo ">>> Put the  $side  half into BOOTLOADER mode now:"
-  echo "      • double-tap the RESET button on the $side half, OR"
-  echo "      • current firmware combo: hold Mod + (macro1=left / macro3=right)"
-  echo "    A USB drive will appear when it's in bootloader."
+  if [ "$side" = left ]; then
+    echo "      • on stock firmware:  Mod + Hotkey 1"
+  else
+    echo "      • on stock firmware:  Mod + Hotkey 3"
+  fi
+  echo "      • or double-click the recessed RESET pinhole (paperclip) in the"
+  echo "        $side thumb cluster, where 3 thumb keys meet."
+  echo "    The half must be USB-connected; a USB drive appears in bootloader."
   echo "============================================================"
   read -rp "Press ENTER once the $side half is in bootloader... " _
   if ./flash.sh "$side"; then
