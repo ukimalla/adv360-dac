@@ -19,7 +19,8 @@ the two spare Adv360 inner-top keys.
 """
 import re, sys
 
-ZDAC = "/run/media/ukimalla/a463f878-2390-4952-8482-e168c97bd878/home/ukimalla/zmk-dactyl_manuform/zmk/app/boards/shields/zdac/zdac.keymap"
+ZDAC = "reference/zdac.keymap"   # newest zdac (2025-05-30 21:26): N6/N7 on
+                                  # base row0, lt5 PAGE_DOWN on right thumb
 
 # ---- parse all layers from zdac.keymap -------------------------------------
 src = open(ZDAC).read()
@@ -62,11 +63,10 @@ ADV_TO_ZDAC = {
 BASE_EXTRA = {6: "&trans", 7: "&trans",
               20: "&bl BL_TOG", 21: "&bl BL_INC", 34: "&bl BL_DEC",
               39: "&studio_unlock"}
-# Base-layer overrides of zdac-mapped positions:
-#  - real 6/7 on the right number row (zdac had bootloader/sys_reset there,
-#    which sit on the Adv360's physical 6/7 keys -> accidental bootloader)
-#  - the now-redundant Ctrl-pos home becomes hold-Nav / tap-Tab
-BASE_OVERRIDE = {8: "&kp N6", 9: "&kp N7", 35: "&lt 4 TAB"}
+# Base-layer override: the now-redundant Ctrl-pos home becomes hold-Nav /
+# tap-Tab. (N6/N7 on the right number row now come straight from the newest
+# zdac source, which already reverted bootloader/sys_reset back to N6/N7.)
+BASE_OVERRIDE = {35: "&lt 4 TAB"}
 
 
 def build(layer, is_base):

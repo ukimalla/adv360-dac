@@ -14,7 +14,7 @@
         &kp ESC &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &trans &trans &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp MINUS
         &kp TAB &kp Q &kp W &kp E &kp R &kp T &bl BL_TOG &bl BL_INC &kp Y &kp U &kp I &kp O &kp P &kp BACKSLASH
         &kp LEFT_SHIFT &kp A &kp S &kp D &kp F &kp G &bl BL_DEC &lt 4 TAB &lt 5 HOME &kp PAGE_UP &mt LEFT_CONTROL ESCAPE &studio_unlock &kp H &kp J &kp K &kp L &kp SEMICOLON &kp SINGLE_QUOTE
-        &mt LEFT_CONTROL CAPSLOCK &kp Z &kp X &kp C &kp V &kp B &lt 6 END &kp PAGE_DOWN &kp N &kp M &kp COMMA &kp DOT &kp SLASH &kp EQUAL
+        &mt LEFT_CONTROL CAPSLOCK &kp Z &kp X &kp C &kp V &kp B &lt 6 END &lt 5 PAGE_DOWN &kp N &kp M &kp COMMA &kp DOT &kp SLASH &kp EQUAL
         &kp LEFT_CONTROL &kp PAGE_DOWN &kp LEFT_GUI &kp LEFT_ALT &kp PAGE_UP &kp SPACE &kp BACKSPACE &mt LEFT_CONTROL LEFT_BRACKET &mt RIGHT_CONTROL RIGHT_BRACKET &lt 2 DELETE &lt 4 ENTER &kp GRAVE &mt LEFT_ALT RIGHT_ALT &kp RIGHT_GUI &kp END &kp RIGHT_ALT
             >;
         };
