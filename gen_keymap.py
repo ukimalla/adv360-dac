@@ -52,23 +52,30 @@ ADV_TO_ZDAC = {
     46:36,47:37,48:38,49:39,50:40,51:41, 54:42,55:43,56:44,57:45,58:46,59:47,
     # 5th row -> Adv360 bottom row
     60:48,61:49,62:50,63:51,64:52,   71:55,72:56,73:57,74:58,75:59,
-    # left thumb
-    65:53,  66:60,  35:62,  36:61,  52:66,  67:68,
-    # right thumb
-    70:54,  69:65,  38:63,  37:64,  53:67,  68:69,
+    # left thumb  (home keys swapped: Alt pos=L5/volume, Ctrl pos=L4/Nav)
+    65:53,  66:60,  35:61,  36:62,  52:66,  67:68,
+    # right thumb (mirror of the home swap: PgUp <-> Ctrl/Esc)
+    70:54,  69:65,  38:64,  37:63,  53:67,  68:69,
 }
-HOLES = {20, 21, 34, 39}              # disabled matrix positions -> &none
-# spare Adv360 inner-top keys: restore zdac's omitted N6/N7 on the base layer
-BASE_EXTRA = {6: "&kp N6", 7: "&kp N7"}
+# Adv360-only keys (info.json mod1..mod6); all are real, assignable keys.
+# mod1/2 top-inner=blank; mod3/4/5=backlight; mod6=ZMK Studio unlock.
+BASE_EXTRA = {6: "&trans", 7: "&trans",
+              20: "&bl BL_TOG", 21: "&bl BL_INC", 34: "&bl BL_DEC",
+              39: "&studio_unlock"}
+# Base-layer overrides of zdac-mapped positions:
+#  - real 6/7 on the right number row (zdac had bootloader/sys_reset there,
+#    which sit on the Adv360's physical 6/7 keys -> accidental bootloader)
+#  - the now-redundant Ctrl-pos home becomes hold-Nav / tap-Tab
+BASE_OVERRIDE = {8: "&kp N6", 9: "&kp N7", 35: "&lt 4 TAB"}
 
 
 def build(layer, is_base):
     out = []
     for adv in range(76):
-        if adv in ADV_TO_ZDAC:
+        if is_base and adv in BASE_OVERRIDE:
+            out.append(BASE_OVERRIDE[adv])
+        elif adv in ADV_TO_ZDAC:
             out.append(layer[ADV_TO_ZDAC[adv]])
-        elif adv in HOLES:
-            out.append("&none")
         elif is_base and adv in BASE_EXTRA:
             out.append(BASE_EXTRA[adv])
         else:
